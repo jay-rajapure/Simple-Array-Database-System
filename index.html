@@ -6,19 +6,30 @@
 <body>
    <h1>Simple array database system </h1> 
    <button onclick="display_btn('create-db-button')">create database </button>
-    <input type="text" style="display: none;">
+    <input type="text" style="display: none; " id="create-db-input" placeholder="Enter db name">
+    <button onclick="createDataBase()" > submit </button>
    <script> 
      const databases = [];
       function display_btn(str)
       {
-        console.log("hello from outside ")
+        
         switch (str)
         {
             case 'create-db-button':
-                console.log("hello world from inside ")
+                document.getElementById("create-db-input").style.display = "inline"
                 break;
         }
 
+      }
+
+      function createDataBase(){
+         inputelement = document.getElementById("create-db-input")
+         input_value = inputelement.value 
+         databases.push(input_value)
+         databases.forEach(
+          function(currentDb){
+              console.log(currentDb)
+         })
       }
      
 
