@@ -1,4 +1,5 @@
 const databases = [];
+const saved_dbs = [];
       function display_section(str)
       {            
           document.getElementById(str).style.display = "inline"
@@ -33,9 +34,16 @@ const databases = [];
           
           databases.forEach(function(database)
          {
+            if(!saved_dbs.includes(database)){
             const node = document.createElement("option") 
             node.innerHTML = database
+            attribute_node = document.createAttribute("value")
+            attribute_node.value = database
+            node.setAttributeNode(attribute_node)
             select_db.appendChild(node)
+            saved_dbs.push(database)
+
+            }
          }
         )
 
@@ -43,6 +51,7 @@ const databases = [];
       }
       function createTable()
       {
+        
           
       }
       
