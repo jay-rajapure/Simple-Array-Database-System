@@ -5,10 +5,23 @@
 </head>
 <body>
    <h1>Simple array database system </h1> 
-   <button onclick="display_btn('create-db-button')">create database </button>
-    <input type="text" style="display: none; " id="create-db-input" placeholder="Enter db name">
-    <button onclick="createDataBase()" > submit </button>
+   <button onclick="display_section('db-creation-section')">create database </button>
+   <div  id="db-creation-section" style="display: none;">
+    <input type="text"  id="create-db-input" placeholder="Enter db name">
+    <button onclick="createDataBase()" id="submit-db" > submit </button>
     <div id="db-create-output"></div>  
+   </div>
+
+   
+    <button onclick="display_section('table-creation-section')">Create Table </button>
+    <div id="table-creation-section" style="display: none;" >  
+      
+      <select  for="select" name="" id="select-database" onclick="showAllDbs()"> 
+     </select> 
+
+
+
+    </div>
    <script  src="index.js"> 
 
      
