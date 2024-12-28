@@ -15,8 +15,10 @@ const databases = [];
          inputelement = document.getElementById("create-db-input")
          input_value = inputelement.value 
          databases.push(input_value)
+         
          databases.forEach(
           function(currentDb){
               console.log(currentDb)
          })
+         document.getElementById("db-create-output").innerHTML=`${input_value} is created`
       }
