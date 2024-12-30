@@ -1,5 +1,7 @@
 const databases = [];
 const saved_dbs = [];
+
+const table_definition_object = 
       function display_section(str)
       {            
           document.getElementById(str).style.display = "inline"
@@ -49,11 +51,50 @@ const saved_dbs = [];
 
         
       }
-      function createTable()
+      function createTable( )
       {
-        
+         document.getElementById("select-database")
           
       }
+      function getDataDefinition()
+      {   const no_of_columns = document.getElementById("no-of-cols").value
+        
+          const table_creation_section  = document.getElementById("table-creation-section")
+          const container = document.createElement("div");
+          for (let i = 0; i < no_of_columns; i++) {
+            const section = document.createElement("div");
+            section.className = "column-section";
+            section.innerHTML = `
+              <h4>Column ${i + 1}</h4>
+              <label>Column Name: 
+                <input type="text" name="column[${i}][name]" placeholder="Enter column name">
+              </label>
+              <label>Data Type: 
+                <select name="column[${i}][type]">
+                  <option>INT</option>
+                  <option>VARCHAR</option>
+                  <option>TEXT</option>
+                  <option>DATE</option>
+                  <option>BOOLEAN</option>
+                </select>
+              </label>
+              <label>Constraints: 
+                <input type="text" name="column[${i}][constraints]" placeholder="e.g., NOT NULL">
+              </label>
+              <label>Key: 
+                <select name="column[${i}][key]">
+                  <option>None</option>
+                  <option>Primary Key</option>
+                  <option>Foreign Key</option>
+                  <option>Unique</option>
+                </select>
+              </label>
+            `;
+            container.appendChild(section);
+          }
+          table_creation_section.appendChild(container);
+          convertColsDefArryToObject = 
+        }
       
 
       
