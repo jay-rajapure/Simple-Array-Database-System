@@ -1,7 +1,8 @@
 const databases = [];
 const saved_dbs = [];
+const table_definitions = [];
 
-const table_definition_object = 
+
       function display_section(str)
       {            
           document.getElementById(str).style.display = "inline"
@@ -91,11 +92,41 @@ const table_definition_object =
               </label>
             `;
             container.appendChild(section);
+            
+
           }
+            submit_btn = document.createElement("button")
+            onclick_attr = document.createAttribute("onclick")
+            onclick_attr.value =`storeInArr(${no_of_columns})`
+            submit_btn.innerHTML="submit"
+
+            submit_btn.setAttributeNode(onclick_attr)
           table_creation_section.appendChild(container);
-          convertColsDefArryToObject = 
+          table_creation_section.appendChild(submit_btn)
+          
+          
         }
-      
+      function storeInArr(no_of_columns)
+      {  
+        const all_column_defs =[];
+        for(i=0;i<=no_of_columns-1;i++){
+        const column_name = document.getElementsByName(`column[${i}][name]`)
+        const column_constraints = document.getElementsByName(`column[${i}][constraints]`)
+        const column_key =   document.getElementsByName(`column[${i}][key]`)
+        
+          const col_obj= {
+            name : column_name[0].value,
+            constraints: column_constraints[0].value,
+            key:column_key[0].value 
+          }
+          
+          all_column_defs.push(col_obj)
+          
+        }
+        table_definitions.push(all_column_defs)
+             
+        console.log("working properly")
+      }
 
       
 
