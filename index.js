@@ -106,12 +106,24 @@ const table_definitions = [];
           
           
         }
+
+
+
+
       function storeInArr(no_of_columns)
       {  
-        const all_column_defs =[];
-        for(i=0;i<=no_of_columns-1;i++){
+
+        const  table_name =  document.getElementById("table-name")     
+        const  table_def = 
+        {
+          table_name:table_name.value,
+          all_column_defs :[]
+
+        }
+        for(let i=0;i<=no_of_columns-1;i++){
         const column_name = document.getElementsByName(`column[${i}][name]`)
         const column_constraints = document.getElementsByName(`column[${i}][constraints]`)
+        
         const column_key =   document.getElementsByName(`column[${i}][key]`)
         
           const col_obj= {
@@ -120,13 +132,16 @@ const table_definitions = [];
             key:column_key[0].value 
           }
           
-          all_column_defs.push(col_obj)
-          
-        }
-        table_definitions.push(all_column_defs)
-             
-        console.log("working properly")
+          table_def.all_column_defs.push(col_obj)   
+        }  
+        table_definitions.push(table_def)            
       }
+      
+
+
+  
+
+      
 
       
 
