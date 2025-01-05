@@ -1,6 +1,7 @@
 const databases = [];
 const saved_dbs = [];
-const table_definitions = [];
+const table_definitions = []
+let current_table, current_database = undefined
 
 
       function display_section(str)
@@ -20,43 +21,49 @@ const table_definitions = [];
          document.getElementById("db-create-output").innerHTML=`${input_value} is created`
          
       } 
+      //creating placeholder option for select database select tag so it can be initialized so change event can work
+      const select_db = document.getElementById("select-database") 
+          const placeholder_option = document.createElement("option")
+          placeholder_option.setAttribute("value","placeholding") 
+          placeholder_option.selected  
+          placeholder_option.style.display="none"
+          select_db.appendChild(placeholder_option)
       
       function showAllDbs()
       {
-        const table_creation_section = document.getElementById("table-creation-section")
         if(databases.length === 0 )
         {
           const node = document.createElement("b")
           node.innerHTML = " error : please create a database first " 
           table_creation_section.appendChild(node)
           return
-        }
-        
-          const select_db = document.getElementById("select-database")
-          
-          
+        }   
           databases.forEach(function(database)
          {
             if(!saved_dbs.includes(database)){
             const node = document.createElement("option") 
             node.innerHTML = database
             attribute_node = document.createAttribute("value")
-            attribute_node.value = database
+            attribute_node.value = database          
             node.setAttributeNode(attribute_node)
             select_db.appendChild(node)
             saved_dbs.push(database)
 
             }
+            
          }
-        )
+        )   
+      }
 
-        
-      }
-      function createTable( )
-      {
-         document.getElementById("select-database")
-          
-      }
+
+      
+      document.getElementById("select-database").addEventListener("change",
+
+        function(){ console.log("inside the current ")}
+      )
+
+
+
       function getDataDefinition()
       {   const no_of_columns = document.getElementById("no-of-cols").value
         
@@ -123,7 +130,7 @@ const table_definitions = [];
         for(let i=0;i<=no_of_columns-1;i++){
         const column_name = document.getElementsByName(`column[${i}][name]`)
         const column_constraints = document.getElementsByName(`column[${i}][constraints]`)
-        
+
         const column_key =   document.getElementsByName(`column[${i}][key]`)
         
           const col_obj= {
@@ -134,7 +141,8 @@ const table_definitions = [];
           
           table_def.all_column_defs.push(col_obj)   
         }  
-        table_definitions.push(table_def)            
+        table_definitions.push(table_def)   
+        display_section("")         
       }
       
 
