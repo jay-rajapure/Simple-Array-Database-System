@@ -4,8 +4,22 @@
     
 </head>
 <body>
+ 
+
    <h1>Simple array database system </h1> 
+   curent database :
+   <div id="curent-db">None</div>
+   current table:
+   <div id="current-table">None </div>
    <button onclick="display_section('db-creation-section')">create database </button>
+   <button>select database </button>
+
+   <label for="select-database">select database 
+   <select   name="select-database" id="select-database" onclick="showAllDbs()" > 
+   </select>
+   </label>
+  
+
    <div  id="db-creation-section" style="display: none;">
     <input type="text"  id="create-db-input" placeholder="Enter db name">
     <button onclick="createDataBase()" id="submit-db" > submit </button>
@@ -13,22 +27,21 @@
    </div>
 
    
+
+   
     <button onclick="display_section('table-creation-section')">Create Table </button>
     <div id="table-creation-section" style="display: none;" >  
-      <label for="select database">select database</label>
-      <select  for="select" name="" id="select-database" onclick="showAllDbs()"> 
-     </select> 
+       
       <label for="">Enter table name :</label>
       <input type="text" id="table-name"> 
        Enter number of columns : 
       <input type="number" name="" id="no-of-cols">
       <button type="submit" onclick="getDataDefinition()"> submit </button>
-
-      
-     
-
-
     </div>
+
+     <div id="insert-section" style="display: none;"> 
+        
+     </div>
    <script  src="index.js"> 
 
      
