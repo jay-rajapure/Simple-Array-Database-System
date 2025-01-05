@@ -27,7 +27,7 @@ let current_table, current_database = undefined
           placeholder_option.setAttribute("value","placeholding") 
           placeholder_option.selected  
           placeholder_option.style.display="none"
-          select_db.appendChild(placeholder_option)
+          select_db.appendChild(placeholder_option) 
       
       function showAllDbs()
       {
@@ -56,11 +56,19 @@ let current_table, current_database = undefined
       }
 
 
+     
+          
+      select_db.addEventListener("change",
+        ()=>
+        { current_database=select_db.value; 
+          console.log(current_database)
+          curr_db_element = document.getElementById("current-db")
+          curr_db_element.textContent = current_database
+        }
       
-      document.getElementById("select-database").addEventListener("change",
-
-        function(){ console.log("inside the current ")}
       )
+                     
+      
 
 
 
